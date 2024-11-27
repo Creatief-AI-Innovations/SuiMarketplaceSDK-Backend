@@ -33,7 +33,7 @@ cd SuiMarketplaceSDK-Backend
 npm install
 ```
 ### 3. Install MySQL and setup required dbs
-SetUp db with tables in [MySQL](https://www.mysql.com/) .
+SetUp db with tables in [MySQL](https://www.mysql.com/).  <br/>
 [use db/suimarketsdkdb.sql to create db and required tables](db/suimarketsdkdb.sql)
 
 ### 4. Set up environment variables
@@ -76,9 +76,9 @@ The server will start at http://localhost:3000.
 
 
 ### 8. Use this api with SUI Market SDKs
-Clone the sui market place sdk and update the baseUrl with backend server url (eg :  http://localhost:3000).
- - 1. [SUI Market SDK for Javascript](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK)
- - 2. [SUI Market SDK for Unreal](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK-Unreal)
+Clone the sui market place sdk and update the baseUrl with backend server url (eg :  http://localhost:3000).  
+   1. [SUI Market SDK for Javascript](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK)  
+   2. [SUI Market SDK for Unreal](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK-Unreal)  
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
