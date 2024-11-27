@@ -32,13 +32,17 @@ cd SuiMarketplaceSDK-Backend
 ```bash
 npm install
 ```
-### 3. Set up environment variables
+### 3. Install MySQL and setup required dbs
+SetUp db with tables in [MySQL](https://www.mysql.com/) .
+[use db/suimarketsdkdb.sql to create db and required tables](db/suimarketsdkdb.sql)
+
+### 4. Set up environment variables
 Create a .env file in the root directory with the following keys:
 ```
 DB_HOST="127.0.0.1"
 DB_USER="root"
 DB_PASSWORD="YOUR_DB_PASSWORD"
-DB_NAME="YOUR_DB_NAME"
+DB_NAME="suimarketsdkdb"
 JWT_SECRET_TOKEN="YOUR_JWT_SECRET_TOKEN"
 NODEJS_ENCRYPTION_KEY="YOUR_ENCRYPTION_KEY"
 TRADEPORT_USER="YOUR_TRADEPORT_USER"
@@ -46,7 +50,24 @@ TRADEPORT_KEY="YOUR_TRADEPORT_KEY"
 RPC_URL="https://fullnode.mainnet.sui.io:443"
 ```
 
-### 4. Run the server for development with hot-reloading
+### 5. Generate a api-key for using it with SUI Marketplace SDK
+```bash
+npm run create_project demo
+```
+This will create new api-key with the sponsor wallet. Inorder to work buy/sell operations this wallet should be deposited with enough SUI tokens.
+Here is a sample output.
+~~~
+New project is successfully created with wallet address ("0x9326e93c33f57e2baeb67f8f5e6e999256691b19c41aeb170d3a6696758405dc").
+Use the below info in sui market sdk.
+        name    :       demo
+        api-key :       CzAnY9i-cpFQlgZ-btgnje2-leTk10f
+~~~
+
+
+### 6. Deposit the SUI tokens to project wallet created in step 5.
+Deposit enough SUI tokens to the project wallet created in step5
+
+### 7. Run the server for development with hot-reloading
 ```
 npm run dev
 ```
@@ -54,11 +75,10 @@ npm run dev
 The server will start at http://localhost:3000.
 
 
-### 5. Use this api with SUI Market SDKs
+### 8. Use this api with SUI Market SDKs
 Clone the sui market place sdk and update the baseUrl with backend server url (eg :  http://localhost:3000).
-
--1. [SUI Market SDK for Javascript](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK)
--2. [SUI Market SDK for Unreal](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK-Unreal)
+ - 1. [SUI Market SDK for Javascript](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK)
+ - 2. [SUI Market SDK for Unreal](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK-Unreal)
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------

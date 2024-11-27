@@ -2,7 +2,7 @@ import crypto from 'crypto';
 
 // Encryption and decryption functions
 export function encrypt(value: string): string {
-  console.log('Encrypting value:', value);
+  // console.log('Encrypting value:', value);
   if (isEncrypted(value)) {
     console.log(
       'Value is already encrypted. Returning the original encrypted value.',

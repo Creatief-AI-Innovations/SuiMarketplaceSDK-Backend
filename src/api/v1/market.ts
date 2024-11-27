@@ -6,6 +6,8 @@ import { SuiTradingClient } from "@tradeport/sui-trading-sdk";
 import { Ed25519Keypair } from "@mysten/sui/keypairs/ed25519";
 import { decrypt } from "../../utils/crypto.helper";
 import { getFullnodeUrl, SuiClient } from "@mysten/sui/client";
+import { Project } from "../../models/project.model";
+import { Transaction } from "@mysten/sui/transactions";
 
 export const marketRouteV1 = express.Router();
 
@@ -103,10 +105,33 @@ marketRouteV1.post(
           const rpcUrl = process.env.RPC_URL; //getFullnodeUrl('mainnet');
           const client = new SuiClient({ url: rpcUrl! });
 
-          let result = await client.signAndExecuteTransaction({
-            signer: keypair,
-            transaction: tx,
+          const gasOwnerWalletKeyPair = Ed25519Keypair.fromSecretKey(decrypt(project.wallet));
+          tx.setSender(suiWalletAddress);
+          tx.setGasOwner(gasOwnerWalletKeyPair.getPublicKey().toSuiAddress());
+          console.log("public key from gas owner keypair === ", gasOwnerWalletKeyPair.getPublicKey().toSuiAddress());
+  
+          let signedTransaction = await tx.sign({signer : keypair, client});
+          let tx2 = Transaction.from(signedTransaction.bytes);
+          let signedtx2 = await tx2.sign({signer : gasOwnerWalletKeyPair, client});
+  
+          let result = await client.executeTransactionBlock({
+            transactionBlock: signedtx2.bytes,
+            signature:  [signedTransaction.signature, signedtx2.signature],
+            requestType: 'WaitForLocalExecution',
+            options: {
+              showEvents: true,
+              showEffects: true,
+              showObjectChanges: true,
+              showBalanceChanges: true,
+              showInput: true,
+            },
           });
+
+          // let result = await client.signAndExecuteTransaction({
+          //   signer: keypair,
+          //   transaction: tx,
+          // });
+
           const transaction = await client.waitForTransaction({
             digest: result.digest,
             options: {
@@ -165,6 +190,9 @@ marketRouteV1.post(
     // @ts-ignore
     let user = req.user as User;
 
+    // @ts-ignore
+    let project = req.project as Project;
+
     if (user) {
       console.log("key ", process.env.TRADEPORT_KEY);
       console.log("user ", process.env.TRADEPORT_USER);
@@ -197,10 +225,32 @@ marketRouteV1.post(
         const rpcUrl = process.env.RPC_URL; //getFullnodeUrl('mainnet');
         const client = new SuiClient({ url: rpcUrl! });
 
-        let result = await client.signAndExecuteTransaction({
-          signer: keypair,
-          transaction: tx,
+        const gasOwnerWalletKeyPair = Ed25519Keypair.fromSecretKey(decrypt(project.wallet));
+        tx.setSender(suiWalletAddress);
+        tx.setGasOwner(gasOwnerWalletKeyPair.getPublicKey().toSuiAddress());
+        console.log("public key from gas owner keypair === ", gasOwnerWalletKeyPair.getPublicKey().toSuiAddress());
+
+        let signedTransaction = await tx.sign({signer : keypair, client});
+        let tx2 = Transaction.from(signedTransaction.bytes);
+        let signedtx2 = await tx2.sign({signer : gasOwnerWalletKeyPair, client});
+
+        let result = await client.executeTransactionBlock({
+          transactionBlock: signedtx2.bytes,
+          signature:  [signedTransaction.signature, signedtx2.signature],
+          requestType: 'WaitForLocalExecution',
+          options: {
+            showEvents: true,
+            showEffects: true,
+            showObjectChanges: true,
+            showBalanceChanges: true,
+            showInput: true,
+          },
         });
+
+        // let result = await client.signAndExecuteTransaction({
+        //   signer: keypair,
+        //   transaction: tx,
+        // });
         const transaction = await client.waitForTransaction({
           digest: result.digest,
           options: {
@@ -253,6 +303,9 @@ marketRouteV1.post(
     // @ts-ignore
     let user = req.user as User;
 
+    // @ts-ignore
+    let project = req.project as Project;
+
     if (user) {
       console.log("key ", process.env.TRADEPORT_KEY);
       console.log("user ", process.env.TRADEPORT_USER);
@@ -285,10 +338,32 @@ marketRouteV1.post(
         const rpcUrl = process.env.RPC_URL; //getFullnodeUrl('mainnet');
         const client = new SuiClient({ url: rpcUrl! });
 
-        let result = await client.signAndExecuteTransaction({
-          signer: keypair,
-          transaction: tx,
+        const gasOwnerWalletKeyPair = Ed25519Keypair.fromSecretKey(decrypt(project.wallet));
+        tx.setSender(suiWalletAddress);
+        tx.setGasOwner(gasOwnerWalletKeyPair.getPublicKey().toSuiAddress());
+        console.log("public key from gas owner keypair === ", gasOwnerWalletKeyPair.getPublicKey().toSuiAddress());
+
+        let signedTransaction = await tx.sign({signer : keypair, client});
+        let tx2 = Transaction.from(signedTransaction.bytes);
+        let signedtx2 = await tx2.sign({signer : gasOwnerWalletKeyPair, client});
+
+        let result = await client.executeTransactionBlock({
+          transactionBlock: signedtx2.bytes,
+          signature:  [signedTransaction.signature, signedtx2.signature],
+          requestType: 'WaitForLocalExecution',
+          options: {
+            showEvents: true,
+            showEffects: true,
+            showObjectChanges: true,
+            showBalanceChanges: true,
+            showInput: true,
+          },
         });
+
+        // let result = await client.signAndExecuteTransaction({
+        //   signer: keypair,
+        //   transaction: tx,
+        // });
         const transaction = await client.waitForTransaction({
           digest: result.digest,
           options: {
@@ -333,6 +408,9 @@ marketRouteV1.post(
 
     // @ts-ignore
     let user = req.user as User;
+    
+     // @ts-ignore
+    let project = req.project as Project;
 
     if (user) {
 
@@ -359,10 +437,38 @@ marketRouteV1.post(
         const rpcUrl = process.env.RPC_URL; //getFullnodeUrl('mainnet');
         const client = new SuiClient({ url: rpcUrl! });
 
-        let result = await client.signAndExecuteTransaction({
-          signer: keypair,
-          transaction: tx,
+        const gasOwnerWalletKeyPair = Ed25519Keypair.fromSecretKey(decrypt(project.wallet));
+        tx.setSender(suiWalletAddress);
+        tx.setGasOwner(gasOwnerWalletKeyPair.getPublicKey().toSuiAddress());
+        console.log("public key from gas owner keypair === ", gasOwnerWalletKeyPair.getPublicKey().toSuiAddress());
+  
+        // const kindBytes = await tx.build( {client, onlyTransactionKind : true });
+        // // construct a sponsored transaction from the kind bytes
+        // const sponsoredtx = Transaction.fromKind(kindBytes);
+
+      
+        let signedTransaction = await tx.sign({signer : keypair, client});
+        let tx2 = Transaction.from(signedTransaction.bytes);
+        let signedtx2 = await tx2.sign({signer : gasOwnerWalletKeyPair, client});
+
+        let result = await client.executeTransactionBlock({
+          transactionBlock: signedtx2.bytes,
+          signature:  [signedTransaction.signature, signedtx2.signature],
+          requestType: 'WaitForLocalExecution',
+          options: {
+            showEvents: true,
+            showEffects: true,
+            showObjectChanges: true,
+            showBalanceChanges: true,
+            showInput: true,
+          },
         });
+
+        // let result = await client.signAndExecuteTransaction({
+        //   signer: keypair,
+        //   transaction: tx2,
+        // });
+
         const transaction = await client.waitForTransaction({
           digest: result.digest,
           options: {
@@ -377,6 +483,7 @@ marketRouteV1.post(
             message: "Successfully unlisted the product from marketplace",
           });
       } catch (error) {
+        console.log(error);
         res
           .status(401)
           .json({ message: "Something went wrong. Please try again." });
