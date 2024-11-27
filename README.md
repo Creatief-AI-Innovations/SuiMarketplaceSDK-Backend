@@ -1,5 +1,5 @@
 # SUI Marketplace SDK API (Backend)
-Welcome to the SUI Market API documentation. This repository contains the backend source code for the **SUI Marketplace SDK **. The API is designed to handle core functionalities such as authentication,list all available nfts in collection, buy and list nft for sale operations.
+Welcome to the SUI Market API documentation. This repository contains the backend source code for the **SUI Marketplace SDK **. The API is designed to handle core functionalities such as authentication,list all available nfts in a collection, buy and list nft for sale operations from tradeport marketplace.
 
 ## Features
 - RESTful API architecture
@@ -54,7 +54,9 @@ npm run dev
 The server will start at http://localhost:3000.
 
 
-### 5. Use the SUI Market SDKS
-use the sdk for  with base url as : http://localhost:3000.
- - 1. [SUI Market SDK for Javascript](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK)
- - 2. [SUI Market SDK for Unreal](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK-Unreal)
+### 5. Use this api with SUI Market SDKs
+Clone the sui market place sdk and update the baseUrl with backend server url (eg :  http://localhost:3000).
+    1. [SUI Market SDK for Javascript](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK)
+    2. [SUI Market SDK for Unreal](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK-Unreal)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
