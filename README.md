@@ -12,8 +12,8 @@ Welcome to the SUI Market API documentation. This repository contains the backen
 ## Prerequisites
 
 Ensure you have the following installed:
-- [Node.js](https://nodejs.org/) (v14+)
-- [MySQL](https://www.mongodb.com/) 
+- [Node.js](https://nodejs.org/) (v20+)
+- [MySQL](https://www.mysql.com/) 
 - A package manager like `npm`
 ---
 
@@ -39,7 +39,7 @@ DB_USER="root"
 DB_PASSWORD="YOUR_DB_PASSWORD"
 DB_NAME="YOUR_DB_NAME"
 JWT_SECRET_TOKEN="YOUR_JWT_SECRET_TOKEN"
-NODEJS_ENCRYPTION_KEY="00c2adda311376hdf4sj6jsf59042a09"
+NODEJS_ENCRYPTION_KEY="YOUR_ENCRYPTION_KEY"
 TRADEPORT_USER="YOUR_TRADEPORT_USER"
 TRADEPORT_KEY="YOUR_TRADEPORT_KEY"
 RPC_URL="https://fullnode.mainnet.sui.io:443"
