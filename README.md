@@ -34,7 +34,7 @@ npm install
 ```
 ### 3. Install MySQL and setup required dbs
 SetUp db with tables in [MySQL](https://www.mysql.com/).  <br/>
-[use db/suimarketsdkdb.sql to create db and required tables](db/suimarketsdkdb.sql)
+use [ db/suimarketsdkdb.sql ](db/suimarketsdkdb.sql) to create db and required tables  
 
 ### 4. Set up environment variables
 Create a .env file in the root directory with the following keys:
