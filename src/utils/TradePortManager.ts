@@ -41,6 +41,8 @@ export async function fetchListedProductsForCollection(collectionId: string): Pr
                             listed: { _eq: true }
                           }
                           order_by: { price: asc_nulls_last }
+                          offset: 0
+                          limit: 100
                         ) {
                           id
                           price
