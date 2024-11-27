@@ -56,9 +56,9 @@ The server will start at http://localhost:3000.
 
 ### 5. Use this api with SUI Market SDKs
 Clone the sui market place sdk and update the baseUrl with backend server url (eg :  http://localhost:3000).
-~~~
-1. [SUI Market SDK for Javascript](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK)
-2. [SUI Market SDK for Unreal](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK-Unreal)
-~~~
+
+-1. [SUI Market SDK for Javascript](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK)
+-2. [SUI Market SDK for Unreal](https://github.com/Creatief-AI-Innovations/SuiMarketplaceSDK-Unreal)
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
